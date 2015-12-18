@@ -157,8 +157,6 @@ BM25.prototype.search = function(query) {
             this.documents[id]._score += idf * num / denom;
         }
 
-
-
         if (!isNaN(this.documents[id]._score) && this.documents[id]._score > 0) {
             results.push(this.documents[id]);
         }
@@ -168,12 +166,4 @@ BM25.prototype.search = function(query) {
     return results.slice(0, 10);
 };
 
-
-var b = new BM25();
-
-b.addDocument({ id: 1, body: 'Тихо в чаще можжевеля по обрыву.' });
-b.addDocument({ id: 2, body: 'Осень, рыжая кобыла, чешет гриву.' });
-b.addDocument({ id: 3, body: 'Над речным покровом берегов' });
-b.addDocument({ id: 4, body: 'Слышен синий лязг ее подков.' });
-
-console.log(b.search('по обрыву чешет гриву'));
+module.exports = BM25;
